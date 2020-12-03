@@ -1,19 +1,23 @@
 interfaces:
-  auth: ${{ components['architect/fusionauth'].interfaces.http.url }}
-  mgmt: ${{ components['architect/fusionauth'].interfaces.mgmt.url }}
+  auth: ${{ components['architect/fusionauth'].interfaces.app.url }}
 
 components:
   architect/fusionauth:
     extends: file:./architect.yml
     parameters:
-      DATABASE_ROOT_USER: fusionuser
-      DATABASE_ROOT_PASSWORD: fusionpassword
-      DATABASE_USER: fusionuser
-      DATABASE_PASSWORD: fusionpassword
+      DB_NAME: fusionauth
+      ROOT_DB_USER: postgres
+      ROOT_DB_PASS: architect
+      FUSIONAUTH_DB_USER: postgres
+      FUSIONAUTH_DB_PASS: architect
+      DEFAULT_API_KEY: uirz8xafnvz6kyfji795wbypkinmbp7cf469jz37
+      ADMIN_USER_EMAIL: test@architect.io
+      ADMIN_USER_PASSWORD: password
 
     services:
-
-      fusionapi:
-        volumes:
-          config:
-            host_path: ./fa_config
+      fusionauth-db:
+        interfaces:
+          postgres:
+            host: host.docker.internal
+            protocol: postgresql
+            port: 5432
