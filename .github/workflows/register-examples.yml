@@ -39,7 +39,8 @@ jobs:
       matrix: ${{fromJson(needs.detect-changes.outputs.matrix)}}
     steps:
       - uses: actions/checkout@master
-      - run: echo ${{ matrix.component_path }}
+      - name: test
+        run: echo ${{ matrix.component_path }}
       # - name: Setup Node.js
       #   uses: actions/setup-node@v1
       #   with:
