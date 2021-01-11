@@ -1,4 +1,4 @@
-name: examples/nestjs-simple-client
+name: architect/nestjs-simple-client
 description: Client used to test the connection to the simple NestJS microservice
 keywords:
   - nestjs
