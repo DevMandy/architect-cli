@@ -23,8 +23,7 @@ jobs:
           format: 'json'
       - id: detect
         name: Detect changes
-        run: |
-          echo "::set-output name=matrix::${{ steps.files.outputs.modified }}"
+        run: echo "::set-output name=matrix::${{ steps.files.outputs.modified }}"
       # - id: detect
       #   name: Detect changes
       #   run: |
