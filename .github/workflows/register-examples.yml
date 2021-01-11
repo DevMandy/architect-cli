@@ -32,15 +32,15 @@ jobs:
       #     echo $CHANGED_DIRS
       #     echo "::set-output name=matrix::$(jq -n -c --arg v "$CHANGED_DIRS" '{"component_path": $v | split("\n") }')"
 
-  register-components:
-    needs: detect-changes
-    runs-on: ubuntu-latest
-    strategy:
-      matrix: ${{fromJson(needs.detect-changes.outputs.matrix)}}
-    steps:
-      - uses: actions/checkout@master
-      - name: test
-        run: echo "test" #${{ matrix.component_path }}
+  # register-components:
+  #   needs: detect-changes
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix: ${{fromJson(needs.detect-changes.outputs.matrix)}}
+  #   steps:
+  #     - uses: actions/checkout@master
+  #     - name: test
+  #       run: echo "test" #${{ matrix.component_path }}
       # - name: Setup Node.js
       #   uses: actions/setup-node@v1
       #   with:
