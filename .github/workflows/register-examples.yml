@@ -25,8 +25,6 @@ jobs:
         name: Detect changes
         run: |
           echo "::set-output name=matrix::$(echo ${{ steps.files.outputs.modified }})"
-      # - name: Install jq
-      #   run: sudo apt-get update && sudo apt-get install jq
       # - id: detect
       #   name: Detect changes
       #   run: |
