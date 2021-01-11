@@ -24,7 +24,7 @@ jobs:
       - id: detect
         name: Detect changes
         run: |
-          echo "::set-output name=matrix::$(echo ${{ steps.files.outputs.modified }})"
+          echo "::set-output name=matrix::${{ steps.files.outputs.modified }}"
       # - id: detect
       #   name: Detect changes
       #   run: |
