@@ -1,11 +1,9 @@
-name: Register Example Components
+name: Test Unsafe Perm Flag
 
 on:
   push:
     branches:
-      - master
-    paths:
-      - 'examples/**/*'
+      - 94-gitops-docs
 
 jobs:
   detect-changes:
@@ -17,19 +15,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Install jq
-        run: sudo apt-get update && sudo apt-get install jq
-      - id: detect
-        name: Detect changes
-        run: |
-          export CHANGED_DIRS=$(find ./examples/*/architect.yml -type f -maxdepth 0 -exec sh -c 'test $(git diff-tree --name-only --no-commit-id -r ${{ github.sha }} -- $(dirname $1) | wc -c) -ne 0 && dirname $1' sh {}  \;)
-          echo "::set-output name=matrix::$(jq -n -c --arg v "$CHANGED_DIRS" '{"component_path": $v | split("\n") }')"
 
   register-components:
     needs: detect-changes
     runs-on: ubuntu-latest
-    strategy:
-      matrix: ${{fromJson(needs.detect-changes.outputs.matrix)}}
     steps:
       - uses: actions/checkout@master
       - name: Setup Node.js
@@ -40,5 +29,5 @@ jobs:
         run: npm i -g @architect-io/cli --unsafe-perm
       - name: Architect login
         run: architect login -e ${{ secrets.ARCHITECT_EXAMPLES_ACCT_EMAIL }} -p ${{ secrets.ARCHITECT_EXAMPLES_ACCT_PASSWORD }}
-      - name: Register component
-        run: architect register ${{ matrix.component_path }} -t latest
+      - name: Architect version
+        run: architect --version
