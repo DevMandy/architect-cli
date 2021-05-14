@@ -343,10 +343,11 @@ describe('local deploy environment', function () {
         },
         "labels": [
           "traefik.enable=true",
+          "traefik.http.middlewares.test-compress.compress=true",
           "traefik.http.routers.app.rule=Host(`app.arc.localhost`)",
           "traefik.http.routers.app.service=app-service",
           "traefik.http.services.app-service.loadbalancer.server.port=3000",
-          "traefik.http.services.app-service.loadbalancer.server.scheme=http"
+          "traefik.http.services.app-service.loadbalancer.server.scheme=http",
         ],
         "build": {
           "context": path.resolve('./examples/database-seeding'),
@@ -401,10 +402,11 @@ describe('local deploy environment', function () {
         "environment": {},
         "labels": [
           "traefik.enable=true",
+          "traefik.http.middlewares.test-compress.compress=true",
           "traefik.http.routers.hello.rule=Host(`hello.arc.localhost`)",
           "traefik.http.routers.hello.service=hello-service",
           "traefik.http.services.hello-service.loadbalancer.server.port=3000",
-          "traefik.http.services.hello-service.loadbalancer.server.scheme=http"
+          "traefik.http.services.hello-service.loadbalancer.server.scheme=http",
         ],
         "external_links": [
           "gateway:hello.arc.localhost"

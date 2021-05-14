@@ -210,6 +210,7 @@ export class DockerComposeUtils {
 
           if (!service_to.labels.includes(`traefik.enable=true`)) {
             service_to.labels.push(`traefik.enable=true`);
+            service_to.labels.push(`traefik.http.middlewares.test-compress.compress=true`);
           }
           service_to.labels.push(`traefik.http.routers.${interface_name}.rule=Host(\`${interface_name}.arc.localhost\`)`);
           service_to.labels.push(`traefik.http.routers.${interface_name}.service=${interface_name}-service`);

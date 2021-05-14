@@ -317,10 +317,11 @@ describe('sidecar spec v1', () => {
         },
         "labels": [
           "traefik.enable=true",
+          "traefik.http.middlewares.test-compress.compress=true",
           "traefik.http.routers.public.rule=Host(`public.arc.localhost`)",
           "traefik.http.routers.public.service=public-service",
           "traefik.http.services.public-service.loadbalancer.server.port=8080",
-          "traefik.http.services.public-service.loadbalancer.server.scheme=http"
+          "traefik.http.services.public-service.loadbalancer.server.scheme=http",
         ],
         image: 'api:latest',
         ports: ['50001:8080'],
@@ -352,10 +353,11 @@ describe('sidecar spec v1', () => {
         },
         "labels": [
           "traefik.enable=true",
+          "traefik.http.middlewares.test-compress.compress=true",
           "traefik.http.routers.publicv1.rule=Host(`publicv1.arc.localhost`)",
           "traefik.http.routers.publicv1.service=publicv1-service",
           "traefik.http.services.publicv1-service.loadbalancer.server.port=8080",
-          "traefik.http.services.publicv1-service.loadbalancer.server.scheme=http"
+          "traefik.http.services.publicv1-service.loadbalancer.server.scheme=http",
         ],
         image: 'api:latest',
         ports: ['50003:8080'],
@@ -415,6 +417,7 @@ describe('sidecar spec v1', () => {
       "environment": {},
       "labels": [
         "traefik.enable=true",
+        "traefik.http.middlewares.test-compress.compress=true",
         "traefik.http.routers.app.rule=Host(`app.arc.localhost`)",
         "traefik.http.routers.app.service=app-service",
         "traefik.http.services.app-service.loadbalancer.server.port=8080",
@@ -422,7 +425,7 @@ describe('sidecar spec v1', () => {
         "traefik.http.routers.admin.rule=Host(`admin.arc.localhost`)",
         "traefik.http.routers.admin.service=admin-service",
         "traefik.http.services.admin-service.loadbalancer.server.port=8081",
-        "traefik.http.services.admin-service.loadbalancer.server.scheme=http"
+        "traefik.http.services.admin-service.loadbalancer.server.scheme=http",
       ],
       "external_links": [
         "gateway:app.arc.localhost",
