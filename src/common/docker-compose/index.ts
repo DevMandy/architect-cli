@@ -106,10 +106,13 @@ export class DockerComposeUtils {
       if (node.config.image) service.image = node.config.image;
 
       if (node.config.command?.length) { // docker-compose expects environment variables used in commands/entrypoints to be prefixed with $$, not $ in order to use variables local to the container
-        service.command = node.config.command.map(command_part => command_part.replace(/\$/g, '$$$$'));
+        // service.command = node.config.command.map(command_part => command_part.replace(/\$/g, '$$$$'));
+        console.log(node.config.command.length)
+        service.command = node.config.command.map(command_part => command_part.replace(/\$([a-zA-Z0-9-_\S]+)/g, '$$$$$1'));
       }
       if (node.config.entrypoint?.length) {
-        service.entrypoint = node.config.entrypoint.map(entrypoint_part => entrypoint_part.replace(/\$/g, '$$$$'));
+        // service.entrypoint = node.config.entrypoint.map(entrypoint_part => entrypoint_part.replace(/\$/g, '$$$$'));
+        service.entrypoint = node.config.entrypoint.map(entrypoint_part => entrypoint_part.replace(/\$([a-zA-Z0-9-_\S]+)/g, '$$$$$1'));
       }
 
       const cpu = node.config.cpu;
