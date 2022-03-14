@@ -66,6 +66,7 @@ USAGE
 * [`architect platforms:create [PLATFORM]`](#architect-platformscreate-platform)
 * [`architect platforms:destroy [PLATFORM]`](#architect-platformsdestroy-platform)
 * [`architect register [COMPONENT]`](#architect-register-component)
+* [`architect secrets`](#architect-secrets)
 * [`architect task COMPONENT TASK`](#architect-task-component-task)
 * [`architect unlink [COMPONENTPATHORNAME]`](#architect-unlink-componentpathorname)
 * [`architect validate [CONFIGS_OR_COMPONENTS]`](#architect-validate-configs_or_components)
@@ -535,6 +536,26 @@ ALIASES
 ```
 
 _See code: [src/commands/register.ts](//github.com/architect-team/architect-cli/blob/v1.13.1/src/commands/register.ts)_
+
+## `architect secrets`
+
+Retrieve environment secrets from Architect Cloud in yaml format
+
+```
+USAGE
+  $ architect secrets
+
+OPTIONS
+  -a, --account=account            Architect account
+  -e, --environment=environment    Architect environment
+  -h, --help                       show CLI help
+
+ALIASES
+  $ architect secrets:get
+ 
+```
+
+_See code: [src/commands/secrets/index.ts](//https://github.com/DevMandy/architect-cli/blob/devmandy/secrets/src/commands/secrets/index.ts)_
 
 ## `architect task COMPONENT TASK`
 
