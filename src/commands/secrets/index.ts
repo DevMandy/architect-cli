@@ -23,7 +23,7 @@ export default class SecretsGet extends Command {
     const account: Account = await AccountUtils.getAccount(this.app, flags.account);
     const environment = await EnvironmentUtils.getEnvironment(this.app.api, account, flags.environment);
 
-    const { data: secrets } = await this.app.api.get(`/environments/${environment.id}/secrets/values`)
+    const { data: secrets } = await this.app.api.get(`/environments/${environment.id}/secrets/values`);
     this.log(yaml.dump(secrets));
   }
 }
