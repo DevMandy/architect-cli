@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_architect_cli_1686757526005-pr-trigger-input-set
+  identifier: Build_architect_cli_1686757526005prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_architect_cli_1686757526005
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
